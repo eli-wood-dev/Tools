@@ -324,7 +324,7 @@ public class Tools
     }
     
     /**
-     * reverseString
+     * <h1>reverseString</h1>
      * 
      * <ul>
      *  <li>This function takes a String of any size and rewrites it in backwards order</li>
@@ -351,14 +351,17 @@ public class Tools
     }
     
     /**
-    This method returns true is the given str is an integer,
-    otherwise false.
-
-    @author: Dave Slemon, Eli Wood
-    @version v101
-    @param str is a string 
-    @return true if the str is an integer other false
-    */
+     * <h1>Is int</h1>
+     * <p>
+     * This method returns true is the given str is an integer,
+     * otherwise false.
+     *
+     * @author: Dave Slemon, Eli Wood
+     * @version v101
+     * 
+     * @param str is a string 
+     * @return true if the str is an integer other false
+        */
      public static boolean isInt(String str) 
      {
         if (str == null) {
