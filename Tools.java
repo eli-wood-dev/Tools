@@ -43,19 +43,116 @@ public class Tools
     /**
      * <h1>Save</h1>
      * <p>
+     * saves your current array
+     * </p>
+     * 
+     * @author Eli Wood
+     * @version v100
+     * 
+     * @param array the array you want to save
+     * @param fileName filename is the name of the file you want to save
+     */
+    public static void save(int[][]array, String fileName) {
+        array = reduce(array);
+        
+        try {
+            FileWriter out = new FileWriter(fileName);
+            for (int i = 0; i < array.length; i++) {
+                for (int j = 0; j < array[i].length; j++) {
+                    out.write(array[i][j] + " ");
+                }
+                out.write("\n");
+            }
+            out.close();
+        } catch (Exception e) {
+            System.out.println("An error has occured");
+            System.out.println(e);
+        }
+    }
+    /**
+     * <h1>Load</h1>
+     * <p>
      * loads your previously saved 2d array
      * </p>
      * 
      * @author Eli Wood
      * @version v100
      * 
-     * @return 
+     * @return array the loaded array
      */
     public static int[][] load() {
         ArrayList<String> numbers = new ArrayList();
         
         try {
             File saved = new File("saved.txt");
+            
+            Scanner in = new Scanner(saved);
+            
+            while(in.hasNextLine()) {
+                numbers.add(in.nextLine());
+            }
+        } catch (Exception e) {
+            System.out.println("Error: ");
+            System.out.println(e);
+        }
+        
+        int[][] array = new int[numbers.size()][3];
+        
+        try {
+            for (int i = 0; i < array.length; i++) {
+                /*
+                int firstSpace = numbers.get(i).indexOf(' ');
+                int secondSpace = numbers.get(i).substring(firstSpace + 1, numbers.get(i).length()).indexOf(' ') + firstSpace + 1;
+                int lastSpace = numbers.get(i).lastIndexOf(' ');
+                
+                System.out.println(numbers.get(i));
+                System.out.println(firstSpace);
+                System.out.println(secondSpace);
+                System.out.println(lastSpace);
+                
+                array[i][0] = Integer.parseInt(numbers.get(i).substring(0, firstSpace));
+                array[i][1] = Integer.parseInt(numbers.get(i).substring(firstSpace+1, secondSpace));
+                array[i][2] = Integer.parseInt(numbers.get(i).substring(secondSpace+1, lastSpace));
+                
+                System.out.println(array[i][0]);
+                System.out.println(array[i][1]);
+                System.out.println(array[i][2]);
+                */
+               
+                String [] temp = new String [3];
+                
+                temp = numbers.get(i).split(" ");
+                
+                for (int j = 0; j < array[i].length; j++) {
+                    array[i][j] = Integer.parseInt(temp[j]);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error: ");
+            System.out.println(e);
+        }
+        
+        array = expand(array);
+        
+        return array;
+    }
+    /**
+     * <h1>Load</h1>
+     * <p>
+     * loads your previously saved 2d array
+     * </p>
+     * 
+     * @author Eli Wood
+     * @version v100
+     * 
+     * @param fileName then name of the file you want to load
+     * @return array the loaded array
+     */
+    public static int[][] load(String fileName) {
+        ArrayList<String> numbers = new ArrayList();
+        
+        try {
+            File saved = new File(fileName);
             
             Scanner in = new Scanner(saved);
             
