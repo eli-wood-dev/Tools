@@ -71,6 +71,7 @@ public class Tools
         
         try {
             for (int i = 0; i < array.length; i++) {
+                /*
                 int firstSpace = numbers.get(i).indexOf(' ');
                 int secondSpace = numbers.get(i).substring(firstSpace + 1, numbers.get(i).length()).indexOf(' ') + firstSpace + 1;
                 int lastSpace = numbers.get(i).lastIndexOf(' ');
@@ -87,6 +88,15 @@ public class Tools
                 System.out.println(array[i][0]);
                 System.out.println(array[i][1]);
                 System.out.println(array[i][2]);
+                */
+               
+                String [] temp = new String [3];
+                
+                temp = numbers.get(i).split(" ");
+                
+                for (int j = 0; j < array[i].length; j++) {
+                    array[i][j] = Integer.parseInt(temp[j]);
+                }
             }
         } catch (Exception e) {
             System.out.println("Error: ");
@@ -167,7 +177,7 @@ public class Tools
                 } else {
                     full[i][j] = 0;
                 }
-                System.out.println(full[i][j]);
+                //System.out.println(full[i][j]);
             }
         }
         
