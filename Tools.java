@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Tools
 {
     /**
-    * quickSort uses the quick sort algoithm to sort an array of integers
+    * quickSort uses the quick sort algorithm to sort an array of integers
     *
     * @author https://www.programcreek.com/2012/11/quicksort-array-in-java/
     * @version 1.0 March 22, 2021
@@ -57,7 +57,7 @@ public class Tools
     }//part
     
     /**
-    * quickSort uses the quick sort algoithm to sort an array of Strings
+    * quickSort uses the quick sort algorithm to sort an array of Strings
     *
     * @author https://www.programcreek.com/2012/11/quicksort-array-in-java/
     * @version 1.0 March 22, 2021
@@ -580,6 +580,65 @@ public class Tools
             
         return bwPhrase;
         
+    }
+    
+    /**
+     * getMode
+     * finds the mode in an array
+     * @param array is numbers list
+     * @return the mode of the numbers
+     * @author Nathan Braniff, with help from Zachary Sousa
+     * @version 2.00
+     */
+    public static String getMode(int array[]){
+        int uniqueNumbers[] = {array[0]};
+        boolean isMode = false;
+
+
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < uniqueNumbers.length; j++) {
+                if(array[i] != uniqueNumbers[j]) {
+                    int temp[] = new int [uniqueNumbers.length + 1];
+                    for(int k = 0; k < uniqueNumbers.length; k++) {
+                        temp[k] = uniqueNumbers[k];
+                    }
+                    temp[uniqueNumbers.length] = array[i];
+                    uniqueNumbers = temp;
+                }
+            }
+        }
+
+        int occurances[] = new int[uniqueNumbers.length];
+
+        for (int i = 0; i < occurances.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if(array[j] == uniqueNumbers[i]) {
+                    occurances[i] ++;
+                }
+            }
+        }
+
+        for (int i = 0; i <occurances.length - 1; i++) {
+            if(occurances[i] != occurances[i+1]) {
+                isMode = true;
+                break;
+            }
+        }
+        if (isMode) {
+
+            int biggest = 0;
+            int index = 0;
+            for (int i = 0; i < occurances.length; i++) {
+                if (biggest < occurances[i]) {
+                    biggest = occurances[i];
+                    index = i;
+                }
+            }
+
+            return "" + uniqueNumbers[index];
+        }else {
+            return null;
+        }
     }
     
     /**
