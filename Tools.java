@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Tools
 {
     /**
-    * quickSort uses the quick sort algorithm to sort an array of integers
+    * quickSort uses the quick sort algoithm to sort an array of integers
     *
     * @author https://www.programcreek.com/2012/11/quicksort-array-in-java/
     * @version 1.0 March 22, 2021
@@ -57,7 +57,7 @@ public class Tools
     }//part
     
     /**
-    * quickSort uses the quick sort algorithm to sort an array of Strings
+    * quickSort uses the quick sort algoithm to sort an array of Strings
     *
     * @author https://www.programcreek.com/2012/11/quicksort-array-in-java/
     * @version 1.0 March 22, 2021
@@ -591,28 +591,23 @@ public class Tools
      * @version 2.00
      */
     public static String getMode(int array[]){
-        int uniqueNumbers[] = {array[0]};
+        ArrayList<Integer> unique = new ArrayList<Integer>();
+        unique.add(array[0]);
         boolean isMode = false;
-
-
+        
         for (int i = 0; i < array.length; i++) {
-            for (int j = 0; j < uniqueNumbers.length; j++) {
-                if(array[i] != uniqueNumbers[j]) {
-                    int temp[] = new int [uniqueNumbers.length + 1];
-                    for(int k = 0; k < uniqueNumbers.length; k++) {
-                        temp[k] = uniqueNumbers[k];
-                    }
-                    temp[uniqueNumbers.length] = array[i];
-                    uniqueNumbers = temp;
+            for (int j = 0; j < unique.size(); j++) {
+                if(array[i] != unique.get(j)) {
+                    unique.add(array[i]);
                 }
             }
         }
 
-        int occurances[] = new int[uniqueNumbers.length];
+        int occurances[] = new int[unique.size()];
 
         for (int i = 0; i < occurances.length; i++) {
             for (int j = 0; j < array.length; j++) {
-                if(array[j] == uniqueNumbers[i]) {
+                if(array[j] == unique.get(i)) {
                     occurances[i] ++;
                 }
             }
@@ -635,7 +630,61 @@ public class Tools
                 }
             }
 
-            return "" + uniqueNumbers[index];
+            return "" + unique.get(index);
+        }else {
+            return null;
+        }
+    }
+    
+    /**
+     * getMode
+     * finds the mode in an array
+     * @param array is numbers list
+     * @return the mode of the numbers
+     * @author Nathan Braniff, with help from Zachary Sousa
+     * @version 2.00
+     */
+    public static String getMode(double array[]){
+        ArrayList<Double> unique = new ArrayList<Double>();
+        unique.add(array[0]);
+        boolean isMode = false;
+        
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < unique.size(); j++) {
+                if(array[i] != unique.get(j)) {
+                    unique.add(array[i]);
+                }
+            }
+        }
+
+        double occurances[] = new double[unique.size()];
+
+        for (int i = 0; i < occurances.length; i++) {
+            for (int j = 0; j < array.length; j++) {
+                if(array[j] == unique.get(i)) {
+                    occurances[i] ++;
+                }
+            }
+        }
+
+        for (int i = 0; i <occurances.length - 1; i++) {
+            if(occurances[i] != occurances[i+1]) {
+                isMode = true;
+                break;
+            }
+        }
+        if (isMode) {
+
+            double biggest = 0;
+            int index = 0;
+            for (int i = 0; i < occurances.length; i++) {
+                if (biggest < occurances[i]) {
+                    biggest = occurances[i];
+                    index = i;
+                }
+            }
+
+            return "" + unique.get(index);
         }else {
             return null;
         }
@@ -713,7 +762,7 @@ public class Tools
     /**
      * <h1>highest int</h1>
      * <p>
-     * This tool finds the highes number in an int array
+     * This tool finds the highest number in an int array
      * </p>
      * 
      * @author Eli Wood
@@ -731,5 +780,74 @@ public class Tools
         }
         
         return highest;
+    }
+    
+    /**
+     * <h1>lowest int</h1>
+     * <p>
+     * This tool finds the lowest number in an int array
+     * </p>
+     * 
+     * @author Eli Wood
+     * @version v100
+     * @param array is an int array
+     * @return the highest int
+     */
+    public static int lowestInt(int[] array) 
+    {
+        int lowest = array[0];
+        
+        
+        for (int i = 0; i < array.length; i++) {
+            lowest = Math.min(lowest, array[i]);
+        }
+        
+        return lowest;
+    }
+    
+    /**
+     * <h1>highest double</h1>
+     * <p>
+     * This tool finds the highest number in an double array
+     * </p>
+     * 
+     * @author Eli Wood
+     * @version v100
+     * @param array is an double array
+     * @return the highest double
+     */
+    public static double highestDouble(double[] array) 
+    {
+        double highest = array[0];
+        
+        
+        for (int i = 0; i < array.length; i++) {
+            highest = Math.max(highest, array[i]);
+        }
+        
+        return highest;
+    }
+    
+    /**
+     * <h1>lowest double</h1>
+     * <p>
+     * This tool finds the lowest number in an double array
+     * </p>
+     * 
+     * @author Eli Wood
+     * @version v100
+     * @param array is an double array
+     * @return the highest double
+     */
+    public static double lowestDouble(double[] array) 
+    {
+        double lowest = array[0];
+        
+        
+        for (int i = 0; i < array.length; i++) {
+            lowest = Math.min(lowest, array[i]);
+        }
+        
+        return lowest;
     }
 }
