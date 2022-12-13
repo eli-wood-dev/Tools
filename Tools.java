@@ -13,6 +13,94 @@ import java.util.ArrayList;
 public class Tools
 {
     /**
+    * quickSort uses the quick sort algoithm to sort an array of integers
+    *
+    * @author https://www.programcreek.com/2012/11/quicksort-array-in-java/
+    * @version 1.0 March 22, 2021
+    *
+    * @param A is an array of integers to be sorted
+    *
+    * @return A of integers sorted in ascending order
+    */         
+    public static void quickSort(int[] arr, int start, int end)
+    { //quick
+
+        int partition = partition(arr, start, end);
+
+        if(partition-1>start) {
+            quickSort(arr, start, partition - 1);
+        }
+        if(partition+1<end) {
+            quickSort(arr, partition + 1, end);
+        }
+    } //quick
+    
+    //partition is a helper method to quickSort
+    public static int partition(int[] arr, int start, int end)
+    { //part
+        int pivot = arr[end];
+
+        for(int i=start; i<end; i++){
+            if(arr[i]<pivot){
+                int temp= arr[start];
+                arr[start]=arr[i];
+                arr[i]=temp;
+                start++;
+            }
+        }
+
+        int temp = arr[start];
+        arr[start] = pivot;
+        arr[end] = temp;
+
+        return start;
+    }//part
+    
+    /**
+    * quickSort uses the quick sort algoithm to sort an array of Strings
+    *
+    * @author https://www.programcreek.com/2012/11/quicksort-array-in-java/
+    * @version 1.0 March 22, 2021
+    *
+    * @param A is an array of strings to be sorted
+    *
+    * @return A of strings sorted in ascending order
+    */         
+    public static void quickSort(String[] arr, int start, int end)
+    { //quick
+
+        int partition = partition(arr, start, end);
+
+        if(partition-1>start) {
+            quickSort(arr, start, partition - 1);
+        }
+        if(partition+1<end) {
+            quickSort(arr, partition + 1, end);
+        }
+    } //quick
+    
+    //partition is a helper method to quickSort
+    public static int partition(String[] arr, int start, int end)
+    { //part
+        String pivot = arr[end];
+
+        for(int i=start; i<end; i++){
+            if(arr[i].compareTo(pivot) < 0){
+                String temp= arr[start];
+                arr[start]=arr[i];
+                arr[i]=temp;
+                start++;
+            }
+        }
+
+        String temp = arr[start];
+        arr[start] = pivot;
+        arr[end] = temp;
+
+        return start;
+    }//part
+    
+    /**
      * pl
      * 
      * <ul>
