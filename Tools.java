@@ -8,10 +8,47 @@ import java.util.ArrayList;
  * </p>
  *
  * @author Eli Wood, Zachary Sousa, Dave Slemon
- * @version v108
+ * @version v109
  */
 public class Tools
 {
+    /**
+     * pl
+     * 
+     * <ul>
+     *  <li>Smaller version of System.out.println</li>
+     * </ul>
+     * 
+     * @param  s        string to print 
+     *
+     * @author Zachary Sousa
+     * @version 1.00
+     * 
+     * 
+     */
+    public static void pl(String s) {
+        System.out.println(s);
+    }
+    
+    /**
+     * pl
+     * 
+     * <ul>
+     *  <li>Smaller version of System.out.print</li>
+     * </ul>
+     * 
+     * 
+     * @param  s        string to print 
+     *
+     * @author Zachary Sousa
+     * @version 1.00
+     * 
+     * 
+     */
+    public static void p(String s) {
+        System.out.print(s);
+    }
+    
     /**
      * <h1>Save</h1>
      * <p>
