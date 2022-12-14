@@ -57,6 +57,50 @@ public class Tools
     }//part
     
     /**
+    * quickSort uses the quick sort algoithm to sort an array of integers
+    *
+    * @author https://www.programcreek.com/2012/11/quicksort-array-in-java/
+    * @version 1.0 March 22, 2021
+    *
+    * @param A is an array of integers to be sorted
+    *
+    * @return A of integers sorted in ascending order
+    */         
+    public static void quickSort(double[] arr, int start, int end)
+    { //quick
+
+        int partition = partition(arr, start, end);
+
+        if(partition-1>start) {
+            quickSort(arr, start, partition - 1);
+        }
+        if(partition+1<end) {
+            quickSort(arr, partition + 1, end);
+        }
+    } //quick
+    
+    //partition is a helper method to quickSort
+    public static int partition(double[] arr, int start, int end)
+    { //part
+        double pivot = arr[end];
+
+        for(int i=start; i<end; i++){
+            if(arr[i]<pivot){
+                double temp= arr[start];
+                arr[start]=arr[i];
+                arr[i]=temp;
+                start++;
+            }
+        }
+
+        double temp = arr[start];
+        arr[start] = pivot;
+        arr[end] = temp;
+
+        return start;
+    }//part
+    
+    /**
     * quickSort uses the quick sort algoithm to sort an array of Strings
     *
     * @author https://www.programcreek.com/2012/11/quicksort-array-in-java/
