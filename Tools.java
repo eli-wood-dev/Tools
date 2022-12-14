@@ -627,6 +627,86 @@ public class Tools
     }
     
     /**
+     * <h1>Get Mode</h1>
+     * <p>
+     * This function finds the mode and amount of times it appears
+     *
+     * @author: Dave Slemon, Eli Wood
+     * @version v101
+     * 
+     * @param arr is an array you want to find the mode for
+     * @return double[] info is the mode value and times it appears
+     */
+    public static double[] getMode(double[] arr) {
+        quickSort(arr, 0, arr.length-1);
+        double prevNum  = 0.0;
+        double num;
+        double modeValue = 0.0;
+        int modeTimes = 0;
+        int numTimes = 0;
+        
+        for(int i=1; i< arr.length; i++) {
+            
+            num = arr[i];
+            
+            if (num == prevNum) {
+                numTimes++;
+                if (numTimes > modeTimes) {
+                    modeValue = num;
+                    modeTimes = numTimes;
+                }
+            } else {
+                
+                prevNum = num;
+                numTimes = 0;
+            }
+        }
+        double [] info = new double[] {modeValue, modeTimes};
+        
+        return info;
+    }
+    
+    /**
+     * <h1>Get Mode</h1>
+     * <p>
+     * This function finds the mode and amount of times it appears
+     *
+     * @author: Dave Slemon, Eli Wood
+     * @version v101
+     * 
+     * @param arr is an array you want to find the mode for
+     * @return double[] info is the mode value and times it appears
+     */
+    public static int[] getMode(int[] arr) {
+        quickSort(arr, 0, arr.length-1);
+        int prevNum  = 0;
+        int num;
+        int modeValue = 0;
+        int modeTimes = 0;
+        int numTimes = 0;
+        
+        for(int i=1; i< arr.length; i++) {
+            
+            num = arr[i];
+            
+            if (num == prevNum) {
+                numTimes++;
+                if (numTimes > modeTimes) {
+                    modeValue = num;
+                    modeTimes = numTimes;
+                }
+            } else {
+                
+                prevNum = num;
+                numTimes = 0;
+            }
+        }
+        int [] info = new int[] {modeValue, modeTimes};
+        
+        return info;
+    }
+    
+    /**
      * <h1>Is int</h1>
      * <p>
      * This method returns true is the given str is an integer,
