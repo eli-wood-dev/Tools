@@ -260,6 +260,7 @@ public class Tools
             while(in.hasNextLine()) {
                 numbers.add(in.nextLine());
             }
+            in.close();
         } catch (Exception e) {
             System.out.println("Error: ");
             System.out.println(e);
@@ -328,6 +329,7 @@ public class Tools
             while(in.hasNextLine()) {
                 numbers.add(in.nextLine());
             }
+            in.close();
         } catch (Exception e) {
             System.out.println("Error: ");
             System.out.println(e);
@@ -481,6 +483,8 @@ public class Tools
             }
         }
         
+        keybd.close();
+        
         return x;
     }
     
@@ -517,6 +521,8 @@ public class Tools
             }
         }
         
+        keybd.close();
+        
         return x;
     }
     
@@ -540,6 +546,8 @@ public class Tools
         
         System.out.print(question + " ");
         x = keybd.nextLine();
+        
+        keybd.close();
         if (x == null) {
             return "Please enter a valid phrase\n";
         } else {
